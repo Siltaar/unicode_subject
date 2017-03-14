@@ -1,22 +1,16 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 # coding: utf-8
 # author : Simon Descarpentries, 2017-03
 # licence: GPLv3
 
-# from __future__ import print_function, unicode_literals
-from email.header import decode_header
-import fileinput
 import sys
+from email.header import decode_header as d_h
 
 
-for line in fileinput.input():
+for line in sys.stdin:
 	if line.lower().startswith('subject:'):
-		# print('debug '+line, file=sys.stderr)
-		print(' '.join(
-				[
-					unicode(txt, enc if enc else 'utf8')
-					for txt, enc in decode_header(line)
-				]
+		# sys.stderr.write('debug '+line)
+		print ' '.join(
+				[unicode(txt, enc or 'utf8') for txt, enc in d_h(line)]
 			).encode('utf8')
-		)
 		break
