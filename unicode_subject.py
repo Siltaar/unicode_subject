@@ -1,16 +1,11 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 # coding: utf-8
 # author : Simon Descarpentries, 2017-03
 # licence: GPLv3
 
-import sys
-from email.header import decode_header as d_h
+import io, sys
+from email.header import decode_header as d
+from email.header import make_header as m
 
-
-for line in sys.stdin:
-	if line.lower().startswith('subject:'):
-		# sys.stderr.write('debug '+line)
-		print ' '.join(
-				[unicode(txt, enc or 'utf8') for txt, enc in d_h(line)]
-			).encode('utf8')
-		break
+instream = io.TextIOWrapper(sys.stdin.buffer, errors='ignore')
+print(next(m(d(l)) for l in instream if l.lower().startswith('subject:')))
