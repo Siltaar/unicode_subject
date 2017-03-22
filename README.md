@@ -14,4 +14,4 @@ Created to be used with [FDM](https://github.com/nicm/fdm) in a `pipe` matching 
 `Subject: 为什么业绩总不理想？`
 
 ### `fdm.conf` example :
-`match pipe "unicode_subject.py" returns (,"^Subject: ?[^a-zA-Z]*$") action maildir "%h/.Maildir/.spam"`
+`match pipe "python3 -sqI unicode_subject.py" returns (,"^Subject: ?[^a-zA-Z]*$") action maildir "%h/.Maildir/.spam"`
