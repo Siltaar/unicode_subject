@@ -3,8 +3,10 @@ Decode email subject header to UTF8 (RFC 1342).
 
 Expect subject header line to be streamed via stdin.
 
+## Environment
 Created to be used with [FDM](https://github.com/nicm/fdm) in a `pipe` matching rule.
 
+Now integreated to the larger approach : [py_idempotent_spam_test](https://github.com/Siltaar/py_idempotent_spam_test).
 
 ## Example
 
